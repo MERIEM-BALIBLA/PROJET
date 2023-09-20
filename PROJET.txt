@@ -1,0 +1,122 @@
+#include<stdio.h>
+#include<stdlib.h>
+void Menu(){
+    printf("\t\t\t\t\t\t*MESNU*\n");
+    printf("choisir la fonction que vous voullez : \n");
+    printf("1. Ajouter une nouvelle tâche\n");
+    printf("2. Ajouter plusieurs nouvelles tâches\n");
+    printf("3. Afficher la liste de toutes les tâches \n");                    
+    printf("\t\t1.1. Trier les tâches par ordre alphabétique\n");            
+    printf("\t\t1.2. Trier les tâches par deadline\n");                            
+    printf("\t\t1.3. Afficher les tâches dont le deadline est dans 3 jours ou moins\n");               
+    printf("4. Modifier une tâche\n");             
+    printf("\t\t4.1. Modifier la description d'une tâche\n");
+    printf("\t\t4.2. Modifier le statut d’une tâche\n");                           
+    printf("\t\t4.3. Modifier le deadline d’une tâche\n");                    
+    printf("5. Supprimer une tâche par identifiant\n");                         
+    printf("6. Rechercher les Tâches\n");           
+    printf("\t\t6.1. Rechercher une tâche par son Identifiant\n");                 
+    printf("\t\t6.2. Rechercher une tâche par son Titre\n");                       
+    printf("7. Statistiques\n");   
+    printf("\t\t7.1. Afficher le nombre total des tâches\n");                      
+    printf("\t\t7.2. Afficher le nombre de tâches complètes et incomplètes\n"); 
+    printf("\t\t7.3. Afficher le nombre de jours restants jusqu'au délai de chaque tâche");
+}
+void listedestaches(){
+  int nombre;
+  printf("modification sur :");
+  scanf("%d", &nombre);
+  switch (nombre){
+    case 1 : printf("3.1. Trier les tâches par ordre alphabétique :"); break;
+    case 2 : printf("3.2. Trier les tâches par deadline :"); break;
+    case 3 : printf("3.3. Afficher les tâches dont le deadline est dans 3 jours ou moins :"); break;
+  }
+}
+
+void Modifierunetâche(){
+  int nombre ;
+  printf("choisir la methode pour la recherche :");
+  scanf("%d", &nombre);
+  switch (nombre){
+    case 1 : printf("4.1. Rechercher une tâche par son Identifiant"); break;
+    case 2 : printf("4.2. Modifier le statut d’une tâche :"); break;
+    case 3 : printf("4.3. Modifier le deadline d’une tâche :"); break;
+  }  
+}
+void Rechercherlestaches(){
+ int nombre;
+  printf("modification sur :");
+  scanf("%d", &nombre);
+  switch (nombre){
+    case 1 : printf("6.1. Trier les tâches par ordre alphabétique :"); break;
+    case 2 : printf("6.2. Rechercher une tâche par son Titre :"); break;
+  }
+}
+void statistiques(){
+  int nombre ;
+  printf("la statistique :");
+  scanf("%d", &nombre);
+  switch (nombre){
+    case 1 : printf("7.1. Afficher le nombre total des tâches :"); break;
+    case 2 : printf("7.2. Afficher le nombre de tâches complètes et incomplètes :"); break;
+    case 3 : printf("7.3. Afficher le nombre de jours restants jusqu'au délai de chaque tâche :"); 
+    break;
+  }
+  }
+char listedestaches(){
+  char Tableau[100];
+    int taille,Ntache,identifiant;
+    char titre
+    printf("donner la taille du tableau :");
+    scanf("%d", &taille);
+    for (int i = 0;i < tailla;i++){
+      for(int j = 0;j < 1;j++){
+        printf("saisir le numero de la tache :");
+        scanf("%d", &Ntache);
+      }
+      for (int j = 0;j < 5;j++){
+        printf("donner un identifiant unique :");
+        scanf("%d", &identifiant);
+      }
+      for (int j = 0;j < 1;j++){
+        printf("donner le titre de la tache :");
+        scanf("%s", titre);
+      }
+      
+    }
+  for(int i = 0;i < taille;i++){
+    for(int j = 0;j < 1;j++)
+      printf("%d", Ntache);
+    for(int j = 0;j < 1;j++)
+      printf("%d",identifiant);
+    for(int j = 0;j < 1;j++)
+      printf("%s", titre);
+  }
+  
+}
+
+  int main(){
+    Menu();
+    int fonction;
+    printf("saisie la fonction :");
+    scanf("%d", &fonction);
+    switch (fonction) {
+      case 1 : printf("1. Ajouter une nouvelle tâche"); break;
+      case 2 : printf("2. Ajouter plusieurs nouvelles tâches"); break;
+      case 3 : printf("3. Afficher la liste de toutes les tâches\n"); 
+               listedestaches();
+      break;
+      case 4 : printf("4. Modifier une tâche :\n");
+               Modifierunetâche();
+      break;
+      case 5 : printf("5. Supprimer une tâche par identifiant"); break;
+      case 6 : printf("6. Rechercher les Tâches"); 
+                Rechercherlestaches();
+      break;
+      case 7 : printf("7. Statistiques");
+                statistiques();  
+      break;
+      }
+    
+  return 0;
+}
