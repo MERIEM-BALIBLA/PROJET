@@ -1,0 +1,154 @@
+#include<stdio.h>
+#include<stdlib.h>
+int  Ntache,Identifiant[100],Deadline[100],Deadline1;
+char Titre[100],Description[100];
+ 
+    char Description[100], Statut[100];
+void Menu(){
+    printf("\t\t\t\t\t\t*MESNU*\n");
+    printf("choisir la fonction que vous voullez : \n");
+    printf("1. Ajouter une nouvelle tâche\n");
+    printf("2. Ajouter plusieurs nouvelles tâches\n");
+    printf("3. Afficher la liste de toutes les tâches \n");                    
+    printf("\t\t1.1. Trier les tâches par ordre alphabétique\n");            
+    printf("\t\t1.2. Trier les tâches par deadline\n");                        
+    printf("\t\t1.3. Afficher les tâches dont le deadline est dans 3 jours ou moins\n");               
+    printf("4. Modifier une tâche\n");             
+    printf("\t\t4.1. Modifier la description d'une tâche\n");
+    printf("\t\t4.2. Modifier le statut d’une tâche\n");                       
+    printf("\t\t4.3. Modifier le deadline d’une tâche\n");                    
+    printf("5. Supprimer une tâche par identifiant\n");                       
+    printf("6. Rechercher les Tâches\n");           
+    printf("\t\t6.1. Rechercher une tâche par son Identifiant\n");             
+    printf("\t\t6.2. Rechercher une tâche par son Titre\n");                   
+    printf("7. Statistiques\n");   
+    printf("\t\t7.1. Afficher le nombre total des tâches\n");                  
+    printf("\t\t7.2. Afficher le nombre de tâches complètes et incomplètes\n"); 
+    printf("\t\t7.3. Afficher le nombre de jours restants jusqu'au délai de chaque tâche");
+}
+
+//------------------------------------------------------------
+
+void Ajouterunetache(){
+    
+  
+    printf("Entrer l'identifiant : ");
+    scanf("%d", &Identifiant);
+  
+    printf("Saisir le titre de la tâche : ");
+    scanf(" %s", Titre);
+  
+    printf("Donner une petite description sur la tâche : ");
+    scanf(" %[^\n]s", Description);
+  
+    printf("Donner le deadline de la tâche en jours: ");
+    scanf("%d", &Deadline1);
+  
+    printf("Saisir le statut de la tâche : ");
+    scanf(" %s", Statut);
+
+    printf("%d\t%s\t%s\t%d\t%s",Identifiant,Titre,Description,Deadline,Statut);
+}
+
+//-----------------------------------------------------------------
+
+void Ajouterpluseurstache()
+{
+    printf("\nDonner le nombre de tâches que vous voulez : ");
+    scanf("%d", &Ntache);
+    // Fonction saisie  
+    for (int i = 0; i < Ntache; i++)   {
+          printf("\nEntrer l'identifiant : ");
+          scanf("%d", &Identifiant[i]);
+          
+          printf("Saisir le titre de la tâche : ");
+          scanf("%s", Titre[i]);
+      
+          printf("Donner une petite description sur la tâche : ");
+          scanf("\t%[^\n]s", Description[i]);
+
+          printf("Donner le deadline de la tâche en jours : ");
+          scanf("%d", &Deadline[i]);
+
+          printf("Saisir le statut de la tâche : ");
+          scanf("%s", Statut[i]);
+    }
+}
+
+//----------------------------------------------------------------
+void listedestaches(){
+  int nombre;
+  printf("Tri selon :");
+  scanf("%d", &nombre);
+  switch (nombre){
+    case 1 : printf("3.1. Trier les tâches par ordre alphabétique :"); break;
+    case 2 : printf("3.2. Trier les tâches par deadline :"); break;
+    case 3 : printf("3.3. Afficher les tâches dont le deadline est dans 3 jours ou moins :"); break;}
+      printf("chaisir la nature de tri :");
+      scanf("%d", &nombre);
+    //tri par alphabet  
+      for(int i = 0;i < Ntache;i++){
+        if(strcmp(Titre[i],Titre[i+1]) > 0){
+            char RESERV[100];
+            strcpy(RESERV,Titre[i]);
+            strcpy(Titre[i],Titre[i+1]);
+            strcpy(Titre[i+1],RESERV);
+    }
+    }
+  
+    //tri par deadline
+      
+      for(int i = 0;i < Ntache;i++){
+        if(Deadline[0] > Deadline[i]){
+            int reserv = 0;
+	         	reserv = Deadline[0];
+	         	Deadline[0] = Deadline[i];
+	         	Deadline[i] = reserv;
+      }
+      }
+    //selon le deadline 
+
+
+//affichege de la resultat
+    if(nombre == 1){
+      for(int i = 0;i < Ntache;i++)
+      printf("%s", Titre[i]);
+      }
+    if(nombre == 2){
+      for(int i = 0;i < Ntache;i++)
+  printf("%d\t%s\t%d\t%s",Deadline[i],Titre[i],Identifiant[i],Description[i]);
+      }
+   
+}
+//----------------------------------------------------------------
+  int main() {
+    int N3;
+    int fonction;
+    do {
+    Menu();
+    printf("saisie la fonction :");
+    scanf("%d", &fonction);
+    switch (fonction) 
+    {
+      case 1 : printf("1. Ajouter une nouvelle tâche");
+              Ajouterunetache(); break;
+      case 2 : printf("2. Ajouter plusieurs nouvelles tâches");
+              Ajouterpluseurstache(); break;
+      case 3 : printf("3. Afficher la liste de toutes les tâches\n"); 
+               listedestaches();
+      break;
+      case 4 : printf("4. Modifier une tâche :\n");
+               
+      break;
+      case 5 : printf("5. Supprimer une tâche par identifiant"); break;
+      case 6 : printf("6. Rechercher les Tâches"); 
+                
+      break;
+      case 7 : printf("7. Statistiques");
+                  
+      break;
+      }
+
+    } while(fonction != 0);
+    return 0;
+}
